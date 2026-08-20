@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero-panel">
+        <div class="hero-inner">
+          <p class="hero-kicker">Student portfolio</p>
+          <h1>Task Manager</h1>
+          <span class="status-pill">Live board</span>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel composer">
+          <div class="panel-header">
+            <h2>Create task</h2>
+          </div>
+
+          <form id="task-form" class="task-form">
+            <label>
+              <span>Title</span>
+              <input id="title" name="title" type="text" placeholder="Enter task title" required />
+            </label>
+
+            <label>
+              <span>Description</span>
+              <textarea id="description" name="description" rows="4" placeholder="Add more details..."></textarea>
+            </label>
+
+            <label>
+              <span>Priority</span>
+              <select id="priority" name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Add task</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel task-panel">
+          <div class="panel-header task-header">
+            <h2>Tasks</h2>
+            <button id="refresh-btn" class="secondary-btn" type="button">Refresh</button>
+          </div>
+
+          <div id="task-list" class="task-list" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
