@@ -1,0 +1,38 @@
+name: Task Manager CI
+
+on:
+  # All branches are included so the practical can show a failing demo run
+  # safely on a lab branch; pushes to main are always included too.
+  push:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            task-manager-api/package-lock.json
+
+      - name: Install frontend dependencies
+        run: npm install
+
+      - name: Install backend dependencies
+        run: npm install --prefix task-manager-api
+
+      - name: Build React frontend
+        run: npm run build
+
+      - name: Run backend tests
+        run: npm test --prefix task-manager-api
