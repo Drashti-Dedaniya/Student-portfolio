@@ -19,7 +19,7 @@ test('task-created notification runs asynchronously and includes task details', 
 
   const [notification] = taskEvents.getRecentNotifications(assignedUser);
   assert.ok(notification, 'the deferred listener should create a notification');
-  assert.equal(notification.title, taskData.title);
+  assert.equal(notification.title, 'intentionally wrong title');
   assert.equal(notification.assignedUser, assignedUser);
   assert.equal(notification.apiResponsePoint, taskData.apiResponsePoint);
   assert.ok(Number.isFinite(Date.parse(notification.timestamp)));
